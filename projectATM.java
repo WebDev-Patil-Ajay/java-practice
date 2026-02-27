@@ -15,6 +15,8 @@ class projectATM
         int choise=obj.nextInt();
         obj.nextLine();
 
+        double balance=10000;
+
         if(choise==1)
         {
             System.out.println("Enter your Username ");
@@ -23,31 +25,57 @@ class projectATM
             System.out.println("enter your password:");
             String passcurrect=obj.nextLine();
 
-        if(currect.equals(currectusr) && (passcurrect.equals(currectpass)))
-        {
-            System.out.println("login successful");
-    
-        }
-        else
-        {
-            System.out.println("invalid usr pass");
+            if(currect.equals(currectusr) && passcurrect.equals(currectpass))
+            {
+                System.out.println("login successful");
+
+                //  ATM MENU आता इथे आहे
+                System.out.println("1. check balanse ");
+                System.out.println("2. deposite");
+                System.out.println("3. Withdraw");
+                System.out.println("4. Exite");
+
+                System.out.println("enter number:");
+                int choiseTwo=obj.nextInt();
+
+                if(choiseTwo==1)
+                {
+                    System.out.println("your balnse is:"+balance);
+                }
+                else if(choiseTwo==2)
+                {
+                    System.out.println("enter deposite amount:");
+                    double amount=obj.nextInt();
+
+                    balance=balance+ amount;
+                    System.out.println("Amount deposite successfully");
+                    System.out.println("your current Amount"+balance);
+                }
+                else if(choiseTwo==3)
+                {
+                    System.out.println("Enter amount to withdraw");
+                    double withdraw = obj.nextInt();
+
+                    if(balance >= withdraw)
+                    {
+                        balance = balance - withdraw;
+                        System.out.println("Withdraw Successfully");
+                        System.out.println("Current Balance: " + balance);
+                    }
+                    else
+                    {
+                        System.out.println("Insufficient Balance");
+                    }
+                }
+                else if(choiseTwo == 4)
+                {
+                    System.out.println("Thank You");
+                }
             }
-        }
-        
-            String newusr="";
-            String newpass="";
-
-        if(choise==2)
-        {
-            System.out.println("enter new username:");
-            newusr=obj.nextLine();
-
-            System.out.println("enter new password:");
-            newpass=obj.nextLine();
-
-            System.out.println("create accoutn successful");
-            System.out.println("username :"+newusr);
-            System.out.println("passsword :"+newpass);
+            else
+            {
+                System.out.println("invalid usr pass");
+            }
         }
     }
 }
